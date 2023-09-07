@@ -1,0 +1,92 @@
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `TensorLite::TensorLite(std::vector<unsigned long, std::allocator<unsigned long> >)':
+MatUtils.cpp:(.text+0x0): multiple definition of `TensorLite::TensorLite(std::vector<unsigned long, std::allocator<unsigned long> >)'; /tmp/cclr0ih8.o:main.cpp:(.text+0x0): first defined here
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `TensorLite::TensorLite(std::vector<unsigned long, std::allocator<unsigned long> >)':
+MatUtils.cpp:(.text+0x0): multiple definition of `TensorLite::TensorLite(std::vector<unsigned long, std::allocator<unsigned long> >)'; /tmp/cclr0ih8.o:main.cpp:(.text+0x0): first defined here
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `TensorLite::setData(std::vector<double, std::allocator<double> > const&)':
+MatUtils.cpp:(.text+0x126): multiple definition of `TensorLite::setData(std::vector<double, std::allocator<double> > const&)'; /tmp/cclr0ih8.o:main.cpp:(.text+0x126): first defined here
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `TensorLite::add(TensorLite const&) const':
+MatUtils.cpp:(.text+0x1a6): multiple definition of `TensorLite::add(TensorLite const&) const'; /tmp/cclr0ih8.o:main.cpp:(.text+0x1a6): first defined here
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `TensorLite::addInPlace(TensorLite const&)':
+MatUtils.cpp:(.text+0x310): multiple definition of `TensorLite::addInPlace(TensorLite const&)'; /tmp/cclr0ih8.o:main.cpp:(.text+0x310): first defined here
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `TensorLite::multiplyByConstant(double) const':
+MatUtils.cpp:(.text+0x3d4): multiple definition of `TensorLite::multiplyByConstant(double) const'; /tmp/cclr0ih8.o:main.cpp:(.text+0x3d4): first defined here
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `TensorLite::multiplyByConstantInPlace(double)':
+MatUtils.cpp:(.text+0x4dc): multiple definition of `TensorLite::multiplyByConstantInPlace(double)'; /tmp/cclr0ih8.o:main.cpp:(.text+0x4dc): first defined here
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `TensorLite::transpose() const':
+MatUtils.cpp:(.text+0x542): multiple definition of `TensorLite::transpose() const'; /tmp/cclr0ih8.o:main.cpp:(.text+0x542): first defined here
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `TensorLite::print() const':
+MatUtils.cpp:(.text+0x7ec): multiple definition of `TensorLite::print() const'; /tmp/cclr0ih8.o:main.cpp:(.text+0x7ec): first defined here
+/usr/bin/ld: /tmp/ccClQLyy.o: warning: relocation against `_ZSt4cout' in read-only section `.text'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `TensorLite::print() const':
+main.cpp:(.text+0x855): undefined reference to `std::cout'
+/usr/bin/ld: main.cpp:(.text+0x85d): undefined reference to `std::ostream::operator<<(double)'
+/usr/bin/ld: main.cpp:(.text+0x872): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)'
+/usr/bin/ld: main.cpp:(.text+0x8ab): undefined reference to `std::cout'
+/usr/bin/ld: main.cpp:(.text+0x8b3): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `main':
+main.cpp:(.text+0xc21): undefined reference to `std::cout'
+/usr/bin/ld: main.cpp:(.text+0xc29): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)'
+/usr/bin/ld: main.cpp:(.text+0xc30): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&)'
+/usr/bin/ld: main.cpp:(.text+0xc3b): undefined reference to `std::ostream::operator<<(std::ostream& (*)(std::ostream&))'
+/usr/bin/ld: main.cpp:(.text+0xc5b): undefined reference to `std::cout'
+/usr/bin/ld: main.cpp:(.text+0xc63): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)'
+/usr/bin/ld: main.cpp:(.text+0xc6a): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&)'
+/usr/bin/ld: main.cpp:(.text+0xc75): undefined reference to `std::ostream::operator<<(std::ostream& (*)(std::ostream&))'
+/usr/bin/ld: main.cpp:(.text+0xcc4): undefined reference to `TensorLite::multiply(TensorLite const&) const'
+/usr/bin/ld: main.cpp:(.text+0xd13): undefined reference to `std::cout'
+/usr/bin/ld: main.cpp:(.text+0xd1b): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)'
+/usr/bin/ld: main.cpp:(.text+0xd22): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&)'
+/usr/bin/ld: main.cpp:(.text+0xd2d): undefined reference to `std::ostream::operator<<(std::ostream& (*)(std::ostream&))'
+/usr/bin/ld: main.cpp:(.text+0xd4d): undefined reference to `std::cout'
+/usr/bin/ld: main.cpp:(.text+0xd55): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)'
+/usr/bin/ld: main.cpp:(.text+0xd5c): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&)'
+/usr/bin/ld: main.cpp:(.text+0xd67): undefined reference to `std::ostream::operator<<(std::ostream& (*)(std::ostream&))'
+/usr/bin/ld: main.cpp:(.text+0xd87): undefined reference to `std::cout'
+/usr/bin/ld: main.cpp:(.text+0xd8f): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)'
+/usr/bin/ld: main.cpp:(.text+0xd96): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&)'
+/usr/bin/ld: main.cpp:(.text+0xda1): undefined reference to `std::ostream::operator<<(std::ostream& (*)(std::ostream&))'
+/usr/bin/ld: main.cpp:(.text+0xdc1): undefined reference to `std::cout'
+/usr/bin/ld: main.cpp:(.text+0xdc9): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)'
+/usr/bin/ld: main.cpp:(.text+0xdd0): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&)'
+/usr/bin/ld: main.cpp:(.text+0xddb): undefined reference to `std::ostream::operator<<(std::ostream& (*)(std::ostream&))'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `__static_initialization_and_destruction_0(int, int)':
+main.cpp:(.text+0x1015): undefined reference to `std::ios_base::Init::Init()'
+/usr/bin/ld: main.cpp:(.text+0x1030): undefined reference to `std::ios_base::Init::~Init()'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `std::vector<double, std::allocator<double> >::_M_fill_insert(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, unsigned long, double const&)':
+main.cpp:(.text._ZNSt6vectorIdSaIdEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPdS1_EEmRKd[_ZNSt6vectorIdSaIdEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPdS1_EEmRKd]+0x455): undefined reference to `__cxa_begin_catch'
+/usr/bin/ld: main.cpp:(.text._ZNSt6vectorIdSaIdEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPdS1_EEmRKd[_ZNSt6vectorIdSaIdEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPdS1_EEmRKd]+0x4e6): undefined reference to `__cxa_rethrow'
+/usr/bin/ld: main.cpp:(.text._ZNSt6vectorIdSaIdEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPdS1_EEmRKd[_ZNSt6vectorIdSaIdEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPdS1_EEmRKd]+0x4f2): undefined reference to `__cxa_end_catch'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `double* std::vector<double, std::allocator<double> >::_M_allocate_and_copy<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > > >(unsigned long, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double> > >)':
+main.cpp:(.text._ZNSt6vectorIdSaIdEE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKdS1_EEEEPdmT_S9_[_ZNSt6vectorIdSaIdEE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKdS1_EEEEPdmT_S9_]+0x65): undefined reference to `__cxa_begin_catch'
+/usr/bin/ld: main.cpp:(.text._ZNSt6vectorIdSaIdEE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKdS1_EEEEPdmT_S9_[_ZNSt6vectorIdSaIdEE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKdS1_EEEEPdmT_S9_]+0x81): undefined reference to `__cxa_rethrow'
+/usr/bin/ld: main.cpp:(.text._ZNSt6vectorIdSaIdEE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKdS1_EEEEPdmT_S9_[_ZNSt6vectorIdSaIdEE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKdS1_EEEEPdmT_S9_]+0x8d): undefined reference to `__cxa_end_catch'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `std::vector<double, std::allocator<double> >::_M_check_len(unsigned long, char const*) const':
+main.cpp:(.text._ZNKSt6vectorIdSaIdEE12_M_check_lenEmPKc[_ZNKSt6vectorIdSaIdEE12_M_check_lenEmPKc]+0x5f): undefined reference to `std::__throw_length_error(char const*)'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `std::vector<unsigned long, std::allocator<unsigned long> >::_S_check_init_len(unsigned long, std::allocator<unsigned long> const&)':
+main.cpp:(.text._ZNSt6vectorImSaImEE17_S_check_init_lenEmRKS0_[_ZNSt6vectorImSaImEE17_S_check_init_lenEmRKS0_]+0x65): undefined reference to `std::__throw_length_error(char const*)'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `std::vector<double, std::allocator<double> >::_S_check_init_len(unsigned long, std::allocator<double> const&)':
+main.cpp:(.text._ZNSt6vectorIdSaIdEE17_S_check_init_lenEmRKS0_[_ZNSt6vectorIdSaIdEE17_S_check_init_lenEmRKS0_]+0x65): undefined reference to `std::__throw_length_error(char const*)'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `__gnu_cxx::new_allocator<double>::deallocate(double*, unsigned long)':
+main.cpp:(.text._ZN9__gnu_cxx13new_allocatorIdE10deallocateEPdm[_ZN9__gnu_cxx13new_allocatorIdE10deallocateEPdm]+0x2f): undefined reference to `operator delete(void*, unsigned long)'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `__gnu_cxx::new_allocator<unsigned long>::deallocate(unsigned long*, unsigned long)':
+main.cpp:(.text._ZN9__gnu_cxx13new_allocatorImE10deallocateEPmm[_ZN9__gnu_cxx13new_allocatorImE10deallocateEPmm]+0x2f): undefined reference to `operator delete(void*, unsigned long)'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `__gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*)':
+main.cpp:(.text._ZN9__gnu_cxx13new_allocatorIdE8allocateEmPKv[_ZN9__gnu_cxx13new_allocatorIdE8allocateEmPKv]+0x49): undefined reference to `std::__throw_bad_array_new_length()'
+/usr/bin/ld: main.cpp:(.text._ZN9__gnu_cxx13new_allocatorIdE8allocateEmPKv[_ZN9__gnu_cxx13new_allocatorIdE8allocateEmPKv]+0x4e): undefined reference to `std::__throw_bad_alloc()'
+/usr/bin/ld: main.cpp:(.text._ZN9__gnu_cxx13new_allocatorIdE8allocateEmPKv[_ZN9__gnu_cxx13new_allocatorIdE8allocateEmPKv]+0x5e): undefined reference to `operator new(unsigned long)'
+/usr/bin/ld: /tmp/cclr0ih8.o: in function `__gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*)':
+main.cpp:(.text._ZN9__gnu_cxx13new_allocatorImE8allocateEmPKv[_ZN9__gnu_cxx13new_allocatorImE8allocateEmPKv]+0x49): undefined reference to `std::__throw_bad_array_new_length()'
+/usr/bin/ld: main.cpp:(.text._ZN9__gnu_cxx13new_allocatorImE8allocateEmPKv[_ZN9__gnu_cxx13new_allocatorImE8allocateEmPKv]+0x4e): undefined reference to `std::__throw_bad_alloc()'
+/usr/bin/ld: main.cpp:(.text._ZN9__gnu_cxx13new_allocatorImE8allocateEmPKv[_ZN9__gnu_cxx13new_allocatorImE8allocateEmPKv]+0x5e): undefined reference to `operator new(unsigned long)'
+/usr/bin/ld: /tmp/cclr0ih8.o:(.data.rel.local.DW.ref.__gxx_personality_v0[DW.ref.__gxx_personality_v0]+0x0): undefined reference to `__gxx_personality_v0'
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `TensorLite::print() const':
+MatUtils.cpp:(.text+0x855): undefined reference to `std::cout'
+/usr/bin/ld: MatUtils.cpp:(.text+0x85d): undefined reference to `std::ostream::operator<<(double)'
+/usr/bin/ld: MatUtils.cpp:(.text+0x872): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)'
+/usr/bin/ld: MatUtils.cpp:(.text+0x8ab): undefined reference to `std::cout'
+/usr/bin/ld: MatUtils.cpp:(.text+0x8b3): undefined reference to `std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)'
+/usr/bin/ld: /tmp/ccClQLyy.o: in function `__static_initialization_and_destruction_0(int, int)':
+MatUtils.cpp:(.text+0x913): undefined reference to `std::ios_base::Init::Init()'
+/usr/bin/ld: MatUtils.cpp:(.text+0x92e): undefined reference to `std::ios_base::Init::~Init()'
+/usr/bin/ld: warning: creating DT_TEXTREL in a PIE
+collect2: error: ld returned 1 exit status
