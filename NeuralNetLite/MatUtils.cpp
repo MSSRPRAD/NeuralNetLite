@@ -9,17 +9,17 @@ TensorLite::TensorLite(std::vector<size_t> dimensions) : dim(dimensions) {
   for (size_t di : dimensions) {
     SIZE *= di;
   }
-  data = std::vector<double>(SIZE, 0.0);
+  data.assign(SIZE, 0.0);
 }
 
 // Set Data
 void TensorLite::setData(const std::vector<double> &Data) {
   assert(data.size() == Data.size());
-  print();
-  std::cout<<"\n----------------\n";
+  // print();
+  // std::cout<<"\n----------------\n";
   data = Data;
-  print();
-  std::cout<<"\n----------------\n";
+  // print();
+  // std::cout<<"\n----------------\n";
 }
 
 // Common Matrix Operations
@@ -91,9 +91,9 @@ TensorLite TensorLite::transpose() const {
   for (size_t row = 0; row < newRows; ++row) {
     for (size_t col = 0; col < newCols; ++col) {
 
-      const size_t origIndex = col * origRows + row;
+      const size_t origIndex = col * origCols + row;
 
-      const size_t transposedIndex = row * newRows + col;
+      const size_t transposedIndex = row * newCols + col;
 
       result.data[transposedIndex] = data[origIndex];
     }
@@ -106,7 +106,7 @@ TensorLite TensorLite::transpose() const {
 void TensorLite::print() const {
   for (size_t i = 0; i < dim[0]; i++) {
     for (size_t j = 0; j < dim[1]; j++) {
-      std::cout << data[i * dim[0] + j] << " ";
+      std::cout << data[i * dim[1] + j] << " ";
     }
     std::cout << "\n";
   }
@@ -121,15 +121,15 @@ TensorLite TensorLite::multiply(const TensorLite &other) const {
 
   TensorLite result({resRows, resCols});
 
-  for (size_t i = 0; i < resRows; ++i) {
-    for (size_t j = 0; j < resCols; ++j) {
-      double sum = 0.0;
-      for (size_t k = 0; k < inner; k++) {
-        sum += data[resRows * i + k] * other.data[inner * k + j];
+  for(size_t i = 0; i < resRows; ++i){
+    for (size_t j = 0; j < resCols; j++){
+      result.data[i*resCols+j] = 0;
+      for(size_t k = 0; k < inner; k++){
+        result.data[i*resCols+j] += data[i*inner+k]*other.data[k*resCols+j];
       }
-      result.data[resRows * i + j] = sum;
     }
   }
+
   return result;
 }
 

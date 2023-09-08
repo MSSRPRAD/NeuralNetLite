@@ -7,7 +7,7 @@ class TensorLite {
 public:
   // Constructor
   TensorLite(std::vector<size_t> dimensions);
-
+  
   // Accessory Functions
   void setData(const std::vector<double> &Data);
 
