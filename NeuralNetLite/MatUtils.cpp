@@ -15,11 +15,7 @@ TensorLite::TensorLite(std::vector<size_t> dimensions) : dim(dimensions) {
 // Set Data
 void TensorLite::setData(const std::vector<double> &Data) {
   assert(data.size() == Data.size());
-  // print();
-  // std::cout<<"\n----------------\n";
   data = Data;
-  // print();
-  // std::cout<<"\n----------------\n";
 }
 
 // Common Matrix Operations
@@ -37,6 +33,24 @@ void TensorLite::addInPlace(const TensorLite &other) {
   assert(dim == other.dim);
   for (size_t i = 0; i < data.size(); ++i) {
     data[i] += other.data[i];
+  }
+  return;
+}
+
+TensorLite TensorLite::sub(const TensorLite &other) const {
+  assert(dim == other.dim);
+  TensorLite result(dim);
+  for (size_t i = 0; i < data.size(); ++i) {
+    result.data[i] = data[i] - other.data[i];
+  }
+
+  return result;
+}
+
+void TensorLite::subInPlace(const TensorLite &other) {
+  assert(dim == other.dim);
+  for (size_t i = 0; i < data.size(); ++i) {
+    data[i] -= other.data[i];
   }
   return;
 }
@@ -102,16 +116,6 @@ TensorLite TensorLite::transpose() const {
   return result;
 }
 
-// Hardcoded for 2d rn
-void TensorLite::print() const {
-  for (size_t i = 0; i < dim[0]; i++) {
-    for (size_t j = 0; j < dim[1]; j++) {
-      std::cout << data[i * dim[1] + j] << " ";
-    }
-    std::cout << "\n";
-  }
-}
-
 TensorLite TensorLite::multiply(const TensorLite &other) const {
   assert(dim[1] == other.dim[0]);
 
@@ -133,22 +137,56 @@ TensorLite TensorLite::multiply(const TensorLite &other) const {
   return result;
 }
 
-TensorLite TensorLite::meanSquaredError(const TensorLite &target) const {
-  assert(dim == target.dim);
-  size_t size = data.size();
-  TensorLite result(dim);
-  for (size_t i = 0; i < size; i++) {
-    result.data[i] = (target.data[i] - data[i]) * (target.data[i] - data[i]) / 2;
+
+
+// Hardcoded for 2d rn
+void TensorLite::print() const {
+  for (size_t i = 0; i < dim[0]; i++) {
+    for (size_t j = 0; j < dim[1]; j++) {
+      std::cout << data[i * dim[1] + j] << " ";
+    }
+    std::cout << "\n";
   }
-  return result;
 }
 
-TensorLite TensorLite::meanSquaredErrorDer(const TensorLite &target) const {
-  assert(dim == target.dim);
-  size_t size = data.size();
-  TensorLite result(dim);
-  for (size_t i = 0; i < size; i++) {
-    result.data[i] = (target.data[i] - data[i]);
+// Sum
+double TensorLite::sum() const {
+  double sum = 0;
+  double SIZE = data.size();
+  for(size_t i = 0; i < SIZE; i++){
+    sum+=data[i];
   }
-  return result;
+  return sum;
+}
+
+
+void TensorLite::fill(size_t val){
+    size_t SIZE = data.size();
+    {
+      for(size_t i = 0; i < SIZE; i++){
+        data[i] = val;
+      }
+    }
+}
+
+
+void TensorLite::fill(){
+    size_t SIZE = data.size();
+    {
+      std::random_device rd;
+      std::mt19937 gen(rd());  // Mersenne Twister engine
+      std::uniform_real_distribution<double> distribution(0.0, 1.0);  // Specify mean and standard deviation
+      for(size_t i = 0; i < SIZE; i++){
+        data[i] = distribution(gen);
+      }
+    }
+}
+
+void TensorLite::reshape(std::vector<size_t> dimensions){
+    dim = dimensions;
+    size_t SIZE = 1;
+    for(auto it: dimensions){
+        SIZE*=it;
+    }
+    data.resize(0.0, SIZE);
 }

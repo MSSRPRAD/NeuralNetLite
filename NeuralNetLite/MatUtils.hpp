@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <vector>
+#include <functional>
+#include <random>
 class TensorLite {
 
 public:
@@ -15,6 +17,9 @@ public:
   TensorLite add(const TensorLite &other) const;
   void addInPlace(const TensorLite &other);
 
+  TensorLite sub(const TensorLite &other) const;
+  void subInPlace(const TensorLite &other);
+
   TensorLite multiply(const TensorLite &other) const;
 
   TensorLite multiplyByConstant(double constant) const;
@@ -23,31 +28,32 @@ public:
   TensorLite multiplyPairWise(const TensorLite &other) const;
   void multiplyPairWiseInPlace(const TensorLite &other);
 
+  void fill(size_t val);
+  void fill();
+
+  void reshape(std::vector<size_t> dimensions);
+
   TensorLite transpose() const;
+
+  double sum() const;
+
+  void applyInPlace(std::function<double(double)> func) {
+        for (double &value : data) {
+            value = func(value);
+        }
+    }
+
+  TensorLite apply(const std::function<double(double)> func) const {
+    TensorLite result = TensorLite(dim);
+      size_t SIZE = data.size();
+      for (size_t i = 0; i < SIZE; ++i) {
+        result.data[i] = func(data[i]);
+      }
+    return result;
+  }
 
   // Print
   void print() const;
-
-  // Activation Functions
-
-  TensorLite sigmoid() const;
-  TensorLite sigmoidInPlace();
-  TensorLite sigmoidDer() const;
-  TensorLite sigmoidDerInPlace() const;
-
-  TensorLite relu() const;
-  TensorLite reluInPlace();
-  TensorLite reluDer() const;
-  TensorLite reluDerInPlace() const;
-
-  TensorLite tanh() const;
-  TensorLite tanhInPlace();
-  TensorLite tanhDer() const;
-  TensorLite tanhDerInPlace() const;
-
-  // Error Functions
-  TensorLite meanSquaredError(const TensorLite &target) const;
-  TensorLite meanSquaredErrorDer(const TensorLite &target) const;
 
   // Attributes
   std::vector<size_t> dim;
