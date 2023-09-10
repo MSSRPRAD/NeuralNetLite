@@ -6,7 +6,7 @@
 
 double_t MSE(const TensorLite& predictions, const TensorLite& labels)
 {
-    assert(predictions.dim != labels.dim);
+    assert(predictions.dim == labels.dim);
 
     double_t mse = 0.0;
     size_t totalElements = predictions.data.size();

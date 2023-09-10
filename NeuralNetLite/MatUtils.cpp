@@ -101,6 +101,24 @@ void TensorLite::multiplyPairWiseInPlace(const TensorLite& other)
     return;
 }
 
+TensorLite TensorLite::iloc(size_t pos) const {
+    if (pos >= dim[0]) {
+        std::cerr << "Index out of bounds in iloc function." << std::endl;
+        // You may want to handle this error differently, e.g., throw an exception.
+        exit(1);
+    }
+
+    // Calculate the start and end indices for the selected row
+    size_t start = pos * dim[1];
+    size_t end = start + dim[1];
+
+    // Create a new TensorLite for the selected row
+    TensorLite result({1, dim[1]});
+    result.data = std::vector<double_t>(data.begin() + start, data.begin() + end);
+
+    return result;
+}
+
 TensorLite TensorLite::transpose() const
 {
 

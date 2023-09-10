@@ -38,6 +38,8 @@ public:
 
     double_t sum() const;
 
+    TensorLite iloc(size_t pos) const;
+
     void applyInPlace(std::function<double_t(double_t)> func)
     {
         for (double_t& value : data) {
