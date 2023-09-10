@@ -1,63 +1,64 @@
 #pragma once
 
-#include <iostream>
-#include <vector>
 #include <functional>
+#include <iostream>
 #include <random>
+#include <vector>
 class TensorLite {
 
 public:
-  // Constructor
-  TensorLite();
-  TensorLite(std::vector<size_t> dimensions);
-  
-  // Accessory Functions
-  void setData(const std::vector<double_t> &Data);
+    // Constructor
+    TensorLite();
+    TensorLite(std::vector<size_t> dimensions);
 
-  // Common Matrix Operations
-  TensorLite add(const TensorLite &other) const;
-  void addInPlace(const TensorLite &other);
+    // Accessory Functions
+    void setData(const std::vector<double_t>& Data);
 
-  TensorLite sub(const TensorLite &other) const;
-  void subInPlace(const TensorLite &other);
+    // Common Matrix Operations
+    TensorLite add(const TensorLite& other) const;
+    void addInPlace(const TensorLite& other);
 
-  TensorLite multiply(const TensorLite &other) const;
+    TensorLite sub(const TensorLite& other) const;
+    void subInPlace(const TensorLite& other);
 
-  TensorLite multiplyByConstant(double_t constant) const;
-  void multiplyByConstantInPlace(double_t constant);
+    TensorLite multiply(const TensorLite& other) const;
 
-  TensorLite multiplyPairWise(const TensorLite &other) const;
-  void multiplyPairWiseInPlace(const TensorLite &other);
+    TensorLite multiplyByConstant(double_t constant) const;
+    void multiplyByConstantInPlace(double_t constant);
 
-  void fill(size_t val);
-  void fill();
+    TensorLite multiplyPairWise(const TensorLite& other) const;
+    void multiplyPairWiseInPlace(const TensorLite& other);
 
-  void reshape(std::vector<size_t> dimensions);
+    void fill(size_t val);
+    void fill();
 
-  TensorLite transpose() const;
+    void reshape(std::vector<size_t> dimensions);
 
-  double_t sum() const;
+    TensorLite transpose() const;
 
-  void applyInPlace(std::function<double_t(double_t)> func) {
-        for (double_t &value : data) {
+    double_t sum() const;
+
+    void applyInPlace(std::function<double_t(double_t)> func)
+    {
+        for (double_t& value : data) {
             value = func(value);
         }
     }
 
-  TensorLite apply(const std::function<double_t(double_t)> func) const {
-    TensorLite result = TensorLite(dim);
-      size_t SIZE = data.size();
-      for (size_t i = 0; i < SIZE; ++i) {
-        result.data[i] = func(data[i]);
-      }
-    return result;
-  }
+    TensorLite apply(const std::function<double_t(double_t)> func) const
+    {
+        TensorLite result = TensorLite(dim);
+        size_t SIZE = data.size();
+        for (size_t i = 0; i < SIZE; ++i) {
+            result.data[i] = func(data[i]);
+        }
+        return result;
+    }
 
-  // Print
-  void print() const;
+    // Print
+    void print() const;
 
-  // Attributes
-  std::vector<size_t> dim;
-  std::vector<double_t> data;
-
+    // Attributes
+    std::vector<size_t> dim;
+    std::vector<double_t> data;
 };
