@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 
+Linear::Linear() {}
 
 // Implement Constructor of DenseLayer
 DenseLayer::DenseLayer(size_t input_size, size_t output_size, double_t learning_rate){

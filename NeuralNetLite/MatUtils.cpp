@@ -4,6 +4,9 @@
 #include <vector>
 
 // Implement Constructor of TensorLite
+
+TensorLite::TensorLite() {}
+
 TensorLite::TensorLite(std::vector<size_t> dimensions) : dim(dimensions) {
   size_t SIZE = 1;
   for (size_t di : dimensions) {

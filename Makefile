@@ -4,7 +4,7 @@ LIB_DIR = ./NeuralNetLite
 TESTS_DIR = ./tests
 TEST_TARGET = test
 
-SRC_FILES = $(LIB_DIR)/MatUtils.cpp $(LIB_DIR)/Metrics.cpp $(TESTS_DIR)/main.cpp
+SRC_FILES = $(LIB_DIR)/MatUtils.cpp $(LIB_DIR)/Metrics.cpp $(LIB_DIR)/Linear.cpp $(LIB_DIR)/FeedForwardNet.cpp $(TESTS_DIR)/main.cpp
 
 all: $(TEST_TARGET)
 

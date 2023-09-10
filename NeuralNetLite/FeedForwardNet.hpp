@@ -1,6 +1,10 @@
 #pragma once
+#pragma once
 #include"MatUtils.hpp"
+#include"Metrics.hpp"
 #include"Linear.hpp"
+#include<iostream>
+#include<vector>
 
 #include<iostream>
 #include<vector>

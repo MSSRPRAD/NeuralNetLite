@@ -21,9 +21,11 @@ make clean && make all
 
 - [x] Basic Tensor Class
 - [x] Basic Matrix Operations
-- [ ] Basic Loss, Error Functions
-- [ ] Basic Metrics Functions
-- [ ] Layer Superclass
-- [ ] Dense Layer Class
-- [ ] Forward Propogation
-- [ ] Backward Propogation
+- [x] Basic Loss, Error Functions
+- [x] Basic Metrics Functions
+- [x] Layer Superclass
+- [x] Dense Layer Class
+- [x] Forward Propogation
+- [x] Backward Propogation
+- [ ] Bugs
+- [ ] XOR test
