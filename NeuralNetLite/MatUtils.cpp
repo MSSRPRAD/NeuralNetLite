@@ -13,7 +13,7 @@ TensorLite::TensorLite(std::vector<size_t> dimensions) : dim(dimensions) {
 }
 
 // Set Data
-void TensorLite::setData(const std::vector<double> &Data) {
+void TensorLite::setData(const std::vector<double_t> &Data) {
   assert(data.size() == Data.size());
   data = Data;
 }
@@ -55,7 +55,7 @@ void TensorLite::subInPlace(const TensorLite &other) {
   return;
 }
 
-TensorLite TensorLite::multiplyByConstant(double constant) const {
+TensorLite TensorLite::multiplyByConstant(double_t constant) const {
   TensorLite result(dim);
   for (size_t i = 0; i < data.size(); ++i) {
     result.data[i] = data[i] * constant;
@@ -63,7 +63,7 @@ TensorLite TensorLite::multiplyByConstant(double constant) const {
   return result;
 }
 
-void TensorLite::multiplyByConstantInPlace(double constant) {
+void TensorLite::multiplyByConstantInPlace(double_t constant) {
   for (size_t i = 0; i < data.size(); ++i) {
     data[i] *= constant;
   }
@@ -150,9 +150,9 @@ void TensorLite::print() const {
 }
 
 // Sum
-double TensorLite::sum() const {
-  double sum = 0;
-  double SIZE = data.size();
+double_t TensorLite::sum() const {
+  double_t sum = 0;
+  double_t SIZE = data.size();
   for(size_t i = 0; i < SIZE; i++){
     sum+=data[i];
   }
@@ -175,7 +175,7 @@ void TensorLite::fill(){
     {
       std::random_device rd;
       std::mt19937 gen(rd());  // Mersenne Twister engine
-      std::uniform_real_distribution<double> distribution(0.0, 1.0);  // Specify mean and standard deviation
+      std::uniform_real_distribution<double_t> distribution(0.0, 1.0);  // Specify mean and standard deviation
       for(size_t i = 0; i < SIZE; i++){
         data[i] = distribution(gen);
       }

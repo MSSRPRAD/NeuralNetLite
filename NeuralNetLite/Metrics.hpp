@@ -2,10 +2,10 @@
 
 #include "MatUtils.hpp"
 
-static double MSE(const TensorLite &predictions, const TensorLite &labels);
-double sigmoid(double input);
-double sigmoidDer(double input);
-double relu(double input);
-double reluDer(double input);
-double tanH(double input);
-double tanHDer(double input);
+static double_t MSE(const TensorLite &predictions, const TensorLite &labels);
+double_t sigmoid(double_t input);
+double_t sigmoidDer(double_t input);
+double_t relu(double_t input);
+double_t reluDer(double_t input);
+double_t tanH(double_t input);
+double_t tanHDer(double_t input);

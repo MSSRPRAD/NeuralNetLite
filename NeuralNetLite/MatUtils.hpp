@@ -11,7 +11,7 @@ public:
   TensorLite(std::vector<size_t> dimensions);
   
   // Accessory Functions
-  void setData(const std::vector<double> &Data);
+  void setData(const std::vector<double_t> &Data);
 
   // Common Matrix Operations
   TensorLite add(const TensorLite &other) const;
@@ -22,8 +22,8 @@ public:
 
   TensorLite multiply(const TensorLite &other) const;
 
-  TensorLite multiplyByConstant(double constant) const;
-  void multiplyByConstantInPlace(double constant);
+  TensorLite multiplyByConstant(double_t constant) const;
+  void multiplyByConstantInPlace(double_t constant);
 
   TensorLite multiplyPairWise(const TensorLite &other) const;
   void multiplyPairWiseInPlace(const TensorLite &other);
@@ -35,15 +35,15 @@ public:
 
   TensorLite transpose() const;
 
-  double sum() const;
+  double_t sum() const;
 
-  void applyInPlace(std::function<double(double)> func) {
-        for (double &value : data) {
+  void applyInPlace(std::function<double_t(double_t)> func) {
+        for (double_t &value : data) {
             value = func(value);
         }
     }
 
-  TensorLite apply(const std::function<double(double)> func) const {
+  TensorLite apply(const std::function<double_t(double_t)> func) const {
     TensorLite result = TensorLite(dim);
       size_t SIZE = data.size();
       for (size_t i = 0; i < SIZE; ++i) {
@@ -57,6 +57,6 @@ public:
 
   // Attributes
   std::vector<size_t> dim;
-  std::vector<double> data;
+  std::vector<double_t> data;
 
 };
