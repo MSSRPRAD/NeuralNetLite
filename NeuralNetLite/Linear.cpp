@@ -35,12 +35,12 @@ TensorLite DenseLayer::backward(const TensorLite &output_errors) {
     return input_errors;
 }
 
-// Implement Constructor of Activation
-Activation::Activation(std::function<double_t(double_t)> ac, std::function<double_t(double_t)> acDer, size_t input_size){
-    activation = ac;
-    activationDer = acDer;
-    inputs.reshape({1, input_size});
-}
+// // Implement Constructor of Activation
+// Activation::Activation(std::function<double_t(double_t)> ac, std::function<double_t(double_t)> acDer, size_t input_size){
+//     activation = ac;
+//     activationDer = acDer;
+//     inputs.reshape({1, input_size});
+// }
 
 // Implement Forward Propogation of Activation
 TensorLite Activation::forward(const TensorLite &input) {

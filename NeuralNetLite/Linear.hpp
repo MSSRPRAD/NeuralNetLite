@@ -6,6 +6,7 @@
 // Linear Transforms a TensorLite
 class Linear {
     public:
+        Linear();
     // Forward Propogation
         virtual TensorLite forward(const TensorLite &input);
     // Backward Propogation

@@ -8,6 +8,7 @@ class TensorLite {
 
 public:
   // Constructor
+  TensorLite();
   TensorLite(std::vector<size_t> dimensions);
   
   // Accessory Functions

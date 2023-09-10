@@ -12,7 +12,7 @@ FeedForwardNet::FeedForwardNet(){
 }
 
 // Add Layer
-void FeedForwardNet::addLinearLayer(Linear *layer){
+void FeedForwardNet::addLinearLayer(Linear layer){
     layers.push_back(layer);
 }
 
@@ -20,18 +20,18 @@ void FeedForwardNet::addLinearLayer(Linear *layer){
 TensorLite FeedForwardNet::forward(const TensorLite &input) {
     TensorLite output = input;
     for (auto layer : layers) {
-        output = layer->forward(output);
+        output = layer.forward(output);
     }
     return output;
 }
 
 // Backward Propogation
 TensorLite FeedForwardNet::backward(const TensorLite &output_errors) {
-    TensorLite output_errors = output_errors;
-    for (auto it : layers) {
-        output_errors = it->backward(output_errors);
+    TensorLite out = output_errors;
+    for (auto layer : layers) {
+        out = layer.backward(output_errors);
     }
-    return output_errors;
+    return out;
 }
 
 void FeedForwardNet::fit(const TensorLite &X_train, const TensorLite &Y_train, size_t epochs) {

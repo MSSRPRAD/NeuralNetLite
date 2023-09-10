@@ -24,10 +24,10 @@ int main() {
 
     // Model
     FeedForwardNet neuralNetwork = FeedForwardNet();
-    neuralNetwork.addLinearLayer(new DenseLayer(2, 2, 0.1)); 
-    neuralNetwork.addLinearLayer(new Activation(sigmoid, sigmoidDer, 2));
-    neuralNetwork.addLinearLayer(new DenseLayer(2, 1, 0.1)); 
-    neuralNetwork.addLinearLayer(new Activation(sigmoid, sigmoidDer, 1));
+    neuralNetwork.addLinearLayer(DenseLayer(2, 2, 0.1)); 
+    neuralNetwork.addLinearLayer(Activation(sigmoid, sigmoidDer, 2));
+    neuralNetwork.addLinearLayer(DenseLayer(2, 1, 0.1)); 
+    neuralNetwork.addLinearLayer(Activation(sigmoid, sigmoidDer, 1));
     neuralNetwork.fit(X_train, Y_train, 100);
     return 0;
 }
