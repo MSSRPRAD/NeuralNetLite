@@ -2,7 +2,7 @@
 
 #include "MatUtils.hpp"
 
-static double_t MSE(const TensorLite& predictions, const TensorLite& labels);
+double_t MSE(const TensorLite& predictions, const TensorLite& labels);
 double_t sigmoid(double_t input);
 double_t sigmoidDer(double_t input);
 double_t relu(double_t input);

@@ -6,11 +6,10 @@
 // Linear Transforms a TensorLite
 class Linear {
 public:
-    Linear();
     // Forward Propogation
-    virtual TensorLite forward(const TensorLite& input);
+    virtual TensorLite forward(const TensorLite& input){};
     // Backward Propogation
-    virtual TensorLite backward(const TensorLite& input);
+    virtual TensorLite backward(const TensorLite& input){};
 };
 
 // Dense Layer

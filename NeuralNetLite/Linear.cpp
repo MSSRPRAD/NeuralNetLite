@@ -4,8 +4,6 @@
 #include <iostream>
 #include <vector>
 
-Linear::Linear() { }
-
 // Implement Constructor of DenseLayer
 DenseLayer::DenseLayer(size_t input_size, size_t output_size, double_t learning_rate)
 {
@@ -21,6 +19,7 @@ DenseLayer::DenseLayer(size_t input_size, size_t output_size, double_t learning_
 // Forward Propogation of DenseLayer
 TensorLite DenseLayer::forward(const TensorLite& input)
 {
+    
     inputs.setData(input.data);
     return inputs.multiply(weights).add(bias);
 }
@@ -39,13 +38,11 @@ TensorLite DenseLayer::backward(const TensorLite& output_errors)
     return input_errors;
 }
 
-// // Implement Constructor of Activation
-// Activation::Activation(std::function<double_t(double_t)> ac, std::function<double_t(double_t)> acDer, size_t input_size){
-//     activation = ac;
-//     activationDer = acDer;
-//     inputs.reshape({1, input_size});
-// }
-
+Activation::Activation(std::function<double_t(double_t)> ac, std::function<double_t(double_t)> acDer, size_t input_size){
+    activation = ac;
+    activationDer = acDer;
+    inputs.reshape({1, input_size});
+}
 // Implement Forward Propogation of Activation
 TensorLite Activation::forward(const TensorLite& input)
 {
