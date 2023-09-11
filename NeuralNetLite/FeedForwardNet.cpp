@@ -21,7 +21,8 @@ void FeedForwardNet::addLinearLayer(Linear *layer)
 // Feed Forward
 TensorLite FeedForwardNet::forward(const TensorLite& input)
 {
-    TensorLite output = input;
+    TensorLite output = TensorLite(input.dim);
+    output.setData(input.data);
     for (auto layer : layers) {
         output = layer->forward(output);
     }
@@ -53,16 +54,27 @@ void FeedForwardNet::fit(const TensorLite& X_train, const TensorLite& Y_train, s
             // Backward pass
             TensorLite output_errors = output.sub(target);
             backward(output_errors);
+
             // Print stats
-            if(epoch % 10 == 0){
+            if(epoch % (max/20) == 0){
                 std::cout<<"Forward Pass Results: \n";
                 input.print();
                 target.print();
                 output.print();
+                // std::cout << "\nPrinting Weights of Layer:\n";
+                // print();
+                // std::cout << "\nFinished Printing Weights of Layer\n";
                 double_t loss_mse = MSE(output, target);
                 std::cout << "Epoch: " << epoch << "/" << max << std::endl;
                 std::cout << "Loss (MSE): " << loss_mse << std::endl;
             }
         };
     }
+}
+
+void FeedForwardNet::print() const {
+    for(auto layer: layers){
+        layer->print();
+    }
+    std::cout<<"\n";
 }

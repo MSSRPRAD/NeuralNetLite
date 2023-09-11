@@ -15,6 +15,7 @@ TensorLite::TensorLite(std::vector<size_t> dimensions)
         SIZE *= di;
     }
     data.assign(SIZE, 0.0);
+    fill();
 }
 
 // Set Data
@@ -65,11 +66,17 @@ void TensorLite::subInPlace(const TensorLite& other)
     return;
 }
 
-TensorLite TensorLite::multiplyByConstant(double_t constant) const
+TensorLite TensorLite::multiplyByConstant(double_t cnst) const
 {
-    TensorLite result(dim);
+    TensorLite result = TensorLite(dim);
+    // std::cout << "const: " << cnst << "\n";
     for (size_t i = 0; i < data.size(); ++i) {
-        result.data[i] = data[i] * constant;
+        // std::cout << "Before";
+        // std::cout << "\n" << result.data[i] << "\n------\n";
+        // std::cout << "data[i]: " << data[i] << "\n";
+        result.data[i] = data[i] * cnst;
+        // std::cout << "After";
+        // std::cout << "\n" << result.data[i] << "\n------\n";
     }
     return result;
 }
@@ -125,7 +132,7 @@ TensorLite TensorLite::transpose() const
     const std::vector<size_t> origDim = dim;
 
     // Original Dimensions
-    const size_t origRows = origDim[0];
+    // const size_t _origRows = origDim[0];
     const size_t origCols = origDim[1];
 
     // Transposed Dimensions

@@ -16,6 +16,7 @@ public:
     TensorLite backward(const TensorLite& input);
     void addLinearLayer(Linear *layer);
     void fit(const TensorLite& X_train, const TensorLite& Y_train, size_t epochs);
+    void print() const;
     // Attributes
     std::vector<Linear *> layers;
 };

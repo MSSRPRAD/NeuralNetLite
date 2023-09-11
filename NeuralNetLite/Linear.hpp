@@ -5,17 +5,20 @@
 
 // Linear Transforms a TensorLite
 class Linear {
-public:
-    // Forward Propogation
-    virtual TensorLite forward(const TensorLite& input){};
-    // Backward Propogation
-    virtual TensorLite backward(const TensorLite& input){};
+    public:
+        virtual void print() const {};
+        // Forward Propogation
+        virtual TensorLite forward(const TensorLite& input){};
+        // Backward Propogation
+        virtual TensorLite backward(const TensorLite& input){};
 };
 
 // Dense Layer
 class DenseLayer : public Linear {
 public:
     DenseLayer(size_t input_size, size_t output_size, double_t learning_rate);
+
+    void print() const override;
 
     TensorLite forward(const TensorLite& input) override;
 
@@ -32,6 +35,8 @@ public:
 class Activation : public Linear {
 public:
     Activation(std::function<double_t(double_t)> ac, std::function<double_t(double_t)> acDer, size_t input_size);
+
+    void print() const override;
     TensorLite forward(const TensorLite& input) override;
     TensorLite backward(const TensorLite& input) override;
 
@@ -39,4 +44,16 @@ public:
     TensorLite inputs;
     std::function<double_t(double_t)> activation;
     std::function<double_t(double_t)> activationDer;
+};
+
+// Activation Layer
+class SoftMax : public Linear {
+public:
+    SoftMax(size_t input_size);
+
+    TensorLite forward(const TensorLite& input) override;
+    TensorLite backward(const TensorLite& input) override;
+
+    // Attributes
+    TensorLite inputs;
 };

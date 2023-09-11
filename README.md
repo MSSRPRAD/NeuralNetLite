@@ -12,10 +12,12 @@ git clone https://github.com/MSSRPRAD/NeuralNetLite.git
 
 cd NeuralNetLite
 
-make clean && make all
-
-./test
+make clean && make all && ./test
 ```
+
+## Acknowledgment
+
+Many thanks to @polaris66 for tolerating and humouring me throughout the process. Also thanks for fixing all the bugs (and teaching me a lot about C++ in the process!).
 
 ### Current Status:
 
@@ -27,5 +29,5 @@ make clean && make all
 - [x] Dense Layer Class
 - [x] Forward Propogation
 - [x] Backward Propogation
-- [ ] Bugs
-- [ ] XOR test
+- [x] Bugs
+- [x] XOR test
