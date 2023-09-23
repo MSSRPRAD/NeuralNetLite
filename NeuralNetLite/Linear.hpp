@@ -57,3 +57,22 @@ public:
     // Attributes
     TensorLite inputs;
 };
+
+
+// Convolution Layer
+class Conv : public Linear {
+public:
+    Conv(std::vector<size_t> input_dim, std::vector<size_t> kernel_size);
+    
+    void print() const override;
+
+    TensorLite forward(const TensorLite& input) override;
+    TensorLite backward(const TensorLite& input) override;
+
+    // Attributes
+    TensorLite inputs;
+    TensorLite kernel;
+
+    // Methods
+    void setKernel(const TensorLite &new_kernel);
+};
