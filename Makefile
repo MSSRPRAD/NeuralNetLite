@@ -2,14 +2,19 @@ CXX = g++
 CXXFLAGS = -std=c++20 -Wall -Og -g
 LIB_DIR = ./NeuralNetLite
 TESTS_DIR = ./tests
-TEST_TARGET = test
+XOR_TARGET = xor
+CONV_TARGET = conv
 
-SRC_FILES = $(LIB_DIR)/MatUtils.cpp $(LIB_DIR)/Metrics.cpp $(LIB_DIR)/Linear.cpp $(LIB_DIR)/FeedForwardNet.cpp $(TESTS_DIR)/main.cpp
 
-all: $(TEST_TARGET)
+all: $(XOR_TARGET) $(CONV_TARGET)
 
-$(TEST_TARGET): $(SRC_FILES)
+SRC_XOR = $(LIB_DIR)/MatUtils.cpp $(LIB_DIR)/Metrics.cpp $(LIB_DIR)/Linear.cpp $(LIB_DIR)/FeedForwardNet.cpp $(TESTS_DIR)/xor.cpp
+$(XOR_TARGET): $(SRC_XOR)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+SRC_CONV = $(LIB_DIR)/MatUtils.cpp $(LIB_DIR)/Metrics.cpp $(LIB_DIR)/Linear.cpp $(LIB_DIR)/FeedForwardNet.cpp $(TESTS_DIR)/conv.cpp
+$(CONV_TARGET): $(SRC_CONV)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 clean:
-	rm -f $(TEST_TARGET)
+	rm -f $(XOR_TARGET) $(CONV_TARGET)

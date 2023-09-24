@@ -189,6 +189,17 @@ void TensorLite::print() const
     }
 }
 
+// Print everything
+void TensorLite::print_dim(size_t d) const
+{
+    for (size_t i = 0; i < dim[1]; i++) {
+        for (size_t j = 0; j < dim[2]; j++) {
+            std::cout << data[i * dim[1] + j + d*dim[0]*dim[1]] << " ";
+        }
+        std::cout << "\n";
+    }
+}
+
 // Sum
 double_t TensorLite::sum() const
 {

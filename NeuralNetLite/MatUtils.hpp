@@ -59,6 +59,7 @@ public:
 
     // Print
     void print() const;
+    void print_dim(size_t d) const;
 
     // Attributes
     std::vector<size_t> dim;

@@ -129,7 +129,7 @@ TensorLite Conv::forward(const TensorLite &input){
     // Some Checks to prevent errors
     assert(input.dim.size() == kernel.dim.size());
     if(inputs.dim.size() == 3 && kernel.dim.size() == 3){
-        assert(inputs.dim.size() == 3 && kernel.dim.size() == 3 && inputs.dim[2] == kernel.dim[2]);
+        assert(inputs.dim.size() == 3 && kernel.dim.size() == 3 && inputs.dim[0] == kernel.dim[0]);
     }
     for(size_t i = 0; i < inputs.dim.size(); i++){
         assert(kernel.dim[i] <= inputs.dim[i]);
@@ -143,31 +143,42 @@ TensorLite Conv::forward(const TensorLite &input){
     const size_t kernel_width = kernel.dim[2];
     const size_t kernel_depth = kernel.dim[0];
 
-    TensorLite output = TensorLite({input_height-kernel_height+1, input_width-kernel_width+1, input.dim[2]});
+    TensorLite output = TensorLite({kernel_depth, input_height-kernel_height+1, input_width-kernel_width+1});
     const size_t output_height = output.dim[1];
     const size_t output_width = output.dim[2];
     const size_t output_depth = output.dim[0];
 
-    for(size_t row = 0; row <= input_height-kernel_height; row++){
-        for(size_t col = 0; col <= input_width-kernel_width; col++){
+    for(size_t row = 0; row <= input_height-kernel_height+1; row++){
+        for(size_t col = 0; col <= input_width-kernel_width+1; col++){
+            // std::cout<<"row: "<<row<<"| col: "<<col<<"\n";
             // Fill for all depths
             for(int d = 0; d < kernel_depth; d++){
+                // std::cout<<"d: "<<d<<"\n";
                 double_t sum = 0.0;
                 for(size_t k = row; k < row+kernel_height; k++){
                     for(size_t l = col; l < col+kernel_width; l++){
                         size_t inputIdx = col + row*input_width + d*input_width*input_height;
                         size_t kernelIdx = (l-col) + (k-row)*kernel_width + d*(kernel_width*kernel_height);
+                        // std::cout<<"inputs.data[inputIdx]: "<<inputs.data[inputIdx]<<"| kernel.data[kernelIdx]: "<<kernel.data[kernelIdx]<<"\n";
                         sum += inputs.data[inputIdx]*kernel.data[kernelIdx];
+                        // std::cout<<"sum: "<<sum<<"\n";
                     }
                 }
+                // if(d==1) col-=output_width; row-=output_height;
                 size_t outputIdx = col + row*output_width +  d*output_height*output_width;
                 output.data[outputIdx] = sum;
+                std::cout<<"keeping sum="<<sum<<"| in outputIdx="<<outputIdx<<"\n";
             }
         }
     }
 
     return output;
 }
+
+void Conv::setKernel(const TensorLite &new_kernel){
+    kernel = new_kernel;
+}
+
 
 // To Do
 TensorLite Conv::backward(const TensorLite &output_errors){
