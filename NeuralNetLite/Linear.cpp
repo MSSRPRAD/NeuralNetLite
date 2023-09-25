@@ -148,16 +148,16 @@ TensorLite Conv::forward(const TensorLite &input){
     const size_t output_width = output.dim[2];
     const size_t output_depth = output.dim[0];
 
-    for(size_t row = 0; row <= input_height-kernel_height+1; row++){
-        for(size_t col = 0; col <= input_width-kernel_width+1; col++){
-            // std::cout<<"row: "<<row<<"| col: "<<col<<"\n";
-            // Fill for all depths
-            for(int d = 0; d < kernel_depth; d++){
-                // std::cout<<"d: "<<d<<"\n";
+    // Fill for all depths
+    for(int d = 0; d < kernel_depth; d++){
+        std::cout<<"d: "<<d<<"\n";
+        for(size_t row = 0; row < output_height; row++){
+            for(size_t col = 0; col < output_width; col++){
+                // std::cout<<"row: "<<row<<"| col: "<<col<<"\n";
                 double_t sum = 0.0;
                 for(size_t k = row; k < row+kernel_height; k++){
                     for(size_t l = col; l < col+kernel_width; l++){
-                        size_t inputIdx = col + row*input_width + d*input_width*input_height;
+                        size_t inputIdx = l + k*input_width + d*input_width*input_height;
                         size_t kernelIdx = (l-col) + (k-row)*kernel_width + d*(kernel_width*kernel_height);
                         // std::cout<<"inputs.data[inputIdx]: "<<inputs.data[inputIdx]<<"| kernel.data[kernelIdx]: "<<kernel.data[kernelIdx]<<"\n";
                         sum += inputs.data[inputIdx]*kernel.data[kernelIdx];
@@ -167,7 +167,7 @@ TensorLite Conv::forward(const TensorLite &input){
                 // if(d==1) col-=output_width; row-=output_height;
                 size_t outputIdx = col + row*output_width +  d*output_height*output_width;
                 output.data[outputIdx] = sum;
-                std::cout<<"keeping sum="<<sum<<"| in outputIdx="<<outputIdx<<"\n";
+                // std::cout<<"keeping sum="<<sum<<"| in outputIdx="<<outputIdx<<"\n";
             }
         }
     }
